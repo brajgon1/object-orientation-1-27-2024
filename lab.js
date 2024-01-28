@@ -416,17 +416,15 @@ class Vehicle {
 
   move(miles) {
     this.mileage += miles;
-    console.log(`This `)
+    console.log(`This vehicle has moved ${miles} miles. New odometer reading: ${this.mileage}`)
   }
 }
-
-
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
-
+const myFirstVehicle = new Vehicle(5, 'royal blue', 50000)
 
 /* 
   Now we'll create a class that's based off of the vehicle class. 
@@ -438,16 +436,25 @@ class Vehicle {
 
 //Code Here
 
+class Motorcycle extends Vehicle {
+  constructor(capcity, color, mileage, make, isCool) {
+    super(capcity, color, mileage)
+    this.make = make;
+    this.isCool = isCool;
+  }
+}
+
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here 
+const myFirstMotorcycle = new Motorcycle(2, 'Red', 50000, 'Yamaha', 'is Cool')
 
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
-
+myFirstMotorcycle.move(700)
 /*
   Let's make another class based off of Vehicle. 
 
@@ -465,8 +472,26 @@ class Vehicle {
 */
 
 //Code Here
+class Boat extends Vehicle {
+  constructor(capcity, color, mileage, name, type) {
+    super(capcity, color, mileage)
+    this.name = name;
+    this.type = type;
+    this.isSeaworthy = false;
+  }
 
-
+  checkSeaworthiness () {
+    if (this.isSeaworthy) {
+      console.log('The', this.color, this.type, this.name, 'is seaworthy!')
+    } else {
+      console.log('You need to get your', this.type, 'in shape!')
+    }
+  }
+    performMaintenance() {
+      this.isSeaworthy = true;
+      console.log(true)
+    }
+  }
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
   properties except isSeaworthy -- make that one false. Call your variable myFirstBoat.
@@ -474,20 +499,25 @@ class Vehicle {
 
 //Code Here
 
+const myBoat = new Boat(6, 'blue', 75, 'Gabagool', 'Speedster')
+
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
 
+myBoat.checkSeaworthiness()
+
 /*
   Now run the performMaintenance method on your boat
 */
 
 //Code Here 
-
+myBoat.performMaintenance()
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
-
-//Code Here
+// myBoat.performMaintenance()
+myBoat.checkSeaworthiness()
+///Doing this will make the console log show "The blue speedster Gabagool is seaworthy!"
